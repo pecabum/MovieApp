@@ -7,6 +7,7 @@ import { Movie } from '../../types/movies';
 import { ScreenName } from '../../utils/ScreenName';
 import MovieItem from '../MovieItem';
 import { StyleSheet, Text } from 'react-native';
+import { Colors } from '../../utils/Colors';
 
 export const FavoriteTab = () => {
   const favorites = useSelector(favoritesSelector);
@@ -39,5 +40,10 @@ export const FavoriteTab = () => {
 };
 
 const styles = StyleSheet.create({
-  emptyText: { alignSelf: 'center', marginTop: 100 },
+  emptyText: {
+    alignSelf: 'center',
+    fontSize: 20,
+    color: Colors.black,
+    marginTop: 100,
+  },
 });

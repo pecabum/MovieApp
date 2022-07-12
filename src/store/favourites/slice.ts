@@ -30,4 +30,5 @@ export const favoritesReducer = favoritesSlice.reducer;
 /**
  * Selectors
  */
-export const favoritesSelector = (state: RootState) => state.favorites.favorites;
+export const favoritesSelector = (state: RootState) =>
+  state.favorites.favorites;

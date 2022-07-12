@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import reactotron from 'reactotron-react-native';
+import Toast from 'react-native-toast-message';
 import FavoriteButton from '../../components/FavoriteButton';
 import {
   favoritesSelector,
@@ -25,11 +25,17 @@ export const DetailsScreen = ({
   const dispatch = useDispatch();
   const favorites: Movie[] = useSelector(favoritesSelector);
   const isFavorite = favorites.find(item => item.id === movie.id);
+
   const toggleFavorite = useCallback(() => {
     dispatch(isFavorite ? removeFavorite(movie.id) : setFavorite(movie));
+    Toast.show({
+      type: 'success',
+      text1: isFavorite
+        ? 'Movie removed from Favorites'
+        : 'Movie added to Favorites',
+      position: 'bottom',
+    });
   }, [dispatch, isFavorite, movie]);
-
-  reactotron.log('favc', favorites.length);
 
   React.useLayoutEffect(() => {
     navigation.setOptions({
